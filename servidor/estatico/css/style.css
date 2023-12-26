@@ -1,0 +1,130 @@
+*{padding: 0; margin: 0;}
+
+body{
+    font-family: 'Inter', sans-serif;
+    color: #4B4848;
+}
+
+.cabecalho{
+    background-color: #FF5A5F;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.cabecalho ul{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    align-items: center;
+    padding: 20px;
+}
+
+.cabecalho ul li a{
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+img.brand{
+    width: 140px;
+}
+
+.container{
+    max-width: 1280px;
+    padding: 0 60px;
+    margin: 0 auto;
+}
+
+.title{
+    margin: 40px 0;
+}
+
+.title h3{
+    font-weight: 400;
+}
+
+.post-list{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.post-list div{
+    flex: 1;
+}
+
+.post-img img{
+    width: 100%;
+}
+
+.post-desc p{
+    font-weight: 300;
+    line-height: 2;
+    margin: 20px 0;
+}
+
+.btn-primary{
+    background-color: #FF5A5F;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 20px 60px;
+}
+
+.reverse{
+    flex-direction: row-reverse;
+}
+
+.ofertas .item img{
+    width: 100%;
+}
+
+.ofertas{
+    display: flex;
+    gap: 30px;
+}
+
+.ofertas p{
+    margin: 20px 0;
+    font-weight: 300;
+}
+
+.ofertas h4{
+    margin-top: 15px;
+}
+
+.ofertas a{
+    color: blue;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.rodape{
+    background-color: #2D2E2F;    
+    padding: 30px 0
+}
+
+.rodape ul{
+    list-style-type: none;
+    display: flex;   
+    justify-content: space-around;
+}
+
+
+.rodape a{
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.list-ofertas{
+    margin-bottom: 60px;
+}
+
+.title-principal{
+    margin-top: 140px;
+}

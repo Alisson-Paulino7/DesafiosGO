@@ -1,0 +1,34 @@
+{
+    "usuarios": [
+        {
+            "nome": "John Doe",
+            "Tipo": "Leitora",
+            "idade": 30,
+            "Social": {
+                "facebook": "www.facebook.com/johndoe",
+                "twitter": "www.twitter.com/johndoe"
+            },
+            "endereco": {
+                "rua": "123 Main Street",
+                "cidade": "New York",
+                "estado": "NY",
+                "cep": "10001"
+            }
+        },
+        {
+            "nome": "Maria",
+            "Tipo": "Desenvolvedora",
+            "idade": 25,
+            "Social": {
+                "facebook": "www.facebook.com/maria",
+                "twitter": "www.twitter.com/maria"
+            },
+            "endereco": {
+                "rua": "452 Dance Street",
+                "cidade": "Washington",
+                "estado": "DC",
+                "cep": "30001"
+            }
+        }
+    ]
+}
