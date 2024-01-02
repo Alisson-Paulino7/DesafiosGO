@@ -31,7 +31,13 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 
 	params := mux.Vars(r)
 	var cliente Usuario
-	_ = json.NewDecoder(r.Body).Decode(&cliente)
+
+	err := json.NewDecoder(r.Body).Decode(&cliente)
+	if err != nil {
+		http.Error(w, "Erro ao decodificar JSON", http.StatusBadRequest)
+		return
+	}
+
 	cliente.Id = params["id"]
 	client.Users = append(client.Users, cliente)
 	json.NewEncoder(w).Encode(client.Users)
@@ -49,8 +55,9 @@ func ReadOne(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	response := []string{"Usuário não encontrado"}
-	json.NewEncoder(w).Encode(response)
+	// response := []string{"Usuário não encontrado"}
+	// json.NewEncoder(w).Encode(response)
+	http.Error(w, "Usuário não encontrado", http.StatusNotFound)
 }
 
 func DeleteUser(w http.ResponseWriter, r *http.Request) {
@@ -61,6 +68,34 @@ func DeleteUser(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 	}
+	http.Error(w, "Usuário não encontrado", http.StatusNotFound)
+}
+
+func UpdateUser(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+
+	var newUser Usuario
+	err := json.NewDecoder(r.Body).Decode(&newUser)
+	if err != nil {
+		http.Error(w, "Erro ao decodificar JSON", http.StatusBadRequest)
+		return
+	}
+	for i, item := range client.Users {
+		if item.Id == params["id"] {
+			// item.Nome = newUser.Nome
+			// item.Email = newUser.Email
+			// item.Telefone = newUser.Telefone
+			// item.Endereço.Logradouro = newUser.Endereço.Logradouro
+			// item.Endereço.Cidade = newUser.Endereço.Cidade
+			
+			client.Users[i] = newUser
+
+			json.NewEncoder(w).Encode(newUser)
+			w.Write([]byte("Usuário atualizado com sucesso"))
+			return
+		}
+	}
+	http.Error(w, "Usuário não encontrado", http.StatusNotFound)
 }
 
 func main() {
@@ -68,10 +103,10 @@ func main() {
 	client.Users = append(client.Users, Usuario{Id: "1", Nome: "John", Email: "Doe", Telefone: "88888888", Endereço: &Localização{Logradouro: "Rua das Malvas", Cidade: "Barbalha"}})
 	client.Users = append(client.Users, Usuario{Id: "2", Nome: "Koko", Email: "Doe", Telefone: "99999999", Endereço: &Localização{Logradouro: "Rua das Fezes", Cidade: "Juazeiro"}})
 
-	Carregarrouter()
+	CarregarRouter()
 }
 
-func Carregarrouter() {
+func CarregarRouter() {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/cliente/{id}", CreateUser).Methods("POST")
